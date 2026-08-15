@@ -1,0 +1,34 @@
+[Unit]
+Description=Agent News Bot (fresh news desks over localhost)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=agentnewsbot
+Group=agentnewsbot
+WorkingDirectory=/var/lib/agent-news-bot
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONPATH=/opt/agent-news-bot
+Environment=AGENT_NEWSBOT_HOME=/var/lib/agent-news-bot
+Environment=AGENT_NEWSBOT_SHARED=/var/lib/agent-news-bot/shared
+Environment=AGENT_NEWSBOT_PORT=18765
+Environment=AGENT_NEWSBOT_LOOKBACK_HOURS=12
+Environment=AGENT_NEWSBOT_MAX_PER_DESK=20
+Environment="AGENT_NEWSBOT_WEATHER_CITY=New York"
+Environment=AGENT_NEWSBOT_FETCH_INTERVAL=900
+ExecStart=/usr/bin/python3 -m agent_newsbot serve
+Restart=always
+RestartSec=5
+TimeoutStopSec=30
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=read-only
+ReadWritePaths=/var/lib/agent-news-bot
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictSUIDSGID=true
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target

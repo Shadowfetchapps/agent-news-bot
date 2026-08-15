@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+"""CLI wrapper for the agent_newsbot package.
+
+Adds the install prefix to sys.path so `agent-newsbot <serve|fetch|status>`
+works without the package being pip-installed. Override the location with
+$AGENT_NEWSBOT_PREFIX if you installed somewhere other than the default.
+"""
+import os
+import runpy
+import sys
+
+sys.path.insert(0, os.environ.get("AGENT_NEWSBOT_PREFIX", "/opt/agent-news-bot"))
+sys.argv[0] = "agent-newsbot"
+runpy.run_module("agent_newsbot", run_name="__main__")

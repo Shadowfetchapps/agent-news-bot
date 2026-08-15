@@ -1,0 +1,6 @@
+build/
+.DS_Store
+*.swp
+xcuserdata/
+__pycache__/
+*.py[cod]
