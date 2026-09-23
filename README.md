@@ -306,7 +306,7 @@ place them under a top-level `docs/` or `screenshots/` directory and reference t
 
 ## License
 
-Recommended: **MIT** (see repository `LICENSE`). The project uses only system frameworks on macOS and
+**MIT** (see [LICENSE](LICENSE)). The project uses only system frameworks on macOS and
 permissively-licensed Python dependencies (`feedparser`, `requests`), so there is no copyleft
 obligation. Agent News Bot fetches and links to third-party news at runtime and redistributes no news
 content itself; each upstream source's terms govern use of its feed.
